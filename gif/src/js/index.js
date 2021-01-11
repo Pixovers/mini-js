@@ -3,7 +3,7 @@ document.getElementById("button").addEventListener("click", ()=> {
 
     let input_text = document.getElementById("input").value;
 
-    Request();
+    Request(input_text);
 
 });
 
@@ -12,7 +12,7 @@ document.getElementById("input").addEventListener("keyup", (e)=> {
     let input_text = document.getElementById("input").value;
 
     if (e.keyCode === 13) {
-       Request();
+       Request( input_text );
     }
 
 });
@@ -20,9 +20,11 @@ document.getElementById("input").addEventListener("keyup", (e)=> {
 
 
 // AJAX Request
-function Request(){
+function Request( query ){
 
-    let url = "http://api.giphy.com/v1/gifs/search?q=funny+cat&api_key=dc6zaTOxFJmzC";
+    query.replace(" ","+");
+
+    let url = `http://api.giphy.com/v1/gifs/search?q=${query}&api_key=dc6zaTOxFJmzC`;
     let call = new XMLHttpRequest();
     call.open( 'GET', url );
     call.send();
@@ -42,13 +44,52 @@ function Request(){
 /* 3. Show GIFs */
 
 function ShowGIFS(data) {
+document.getElementById('content').innerHTML = "";
 
 
-    var imageURL = data.data[0].images.fixed_height.url;
-    console.log(imageURL);
+    data.data.forEach(image => {
+        let imageURL = image.images.fixed_height.url;
+        document.getElementById('content').innerHTML += `
+        <div class="col-md-3 hover-img">
+        <div class="card text-white bg-dark  mb-3">
+            <div class="card-header">Header</div>
+            <div class="card-body p-1">
+                <img src="${imageURL}" class="card-img-top" alt="">
+            </div>
+        </div>
+    </div>
+    `;
+        console.log(image);
+    });
+    
 
-    document.getElementById('content').innerHTML = `<img src="${imageURL}">`;
-    //document.getElementById("content").innerHTML = input_text;
 
+
+
+document.querySelectorAll('.hover-img').forEach( e => {
+        
+e.addEventListener("mouseover", mouseOver);
+e.addEventListener("mouseout", mouseOut);
+
+
+});
+
+
+function mouseOver(event) {
+     console.log(event.target.classList);
+    
+    if( event.target.classList.indexOf("card-body") != -1 ) {
+        event.target.classList.remove("d-none");
+    }
+    
+}
+
+function mouseOut(event) {
+ 
+    
+}
+    
+
+   
     
 }
