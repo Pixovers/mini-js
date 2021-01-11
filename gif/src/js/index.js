@@ -77,15 +77,12 @@ function ShowGIFS(data) {
 
     });
 
-
+    
     function mouseOver(event) {
-        console.log(this);
         this.firstElementChild.lastElementChild.classList.remove("d-none");
-            //event.target.classList;
     }
 
     function mouseOut(event) {
-        
         if( !this.firstElementChild.lastElementChild.classList.contains("d-none") ) {
             this.firstElementChild.lastElementChild.classList.add("d-none");
         }
