@@ -62,7 +62,7 @@ function ShowGIFS(data) {
             <div class="d-flex">
                 <input class="form-control form-control-sm rounded-0 " id="input" type="search"
                     value="${imageURL}" aria-label="Search" readonly>
-                <button  type="button sm" class="btn btn-primary rounded-0  btn-sm"><i
+                <button  type="button sm" class="copy-gif-button btn btn-primary rounded-0  btn-sm"><i
                         class="fas  fa-share-alt-square"></i> </button>
       
             </div>
@@ -76,12 +76,6 @@ function ShowGIFS(data) {
         //console.log(image);
     });
 
-
-
-
-  
-
-
     document.querySelectorAll('.hover-img').forEach(e => {
         console.log("ciao");
         e.addEventListener("mouseover", mouseOver);
@@ -90,7 +84,6 @@ function ShowGIFS(data) {
 
     });
 
-    
     function mouseOver(event) {
         this.firstElementChild.lastElementChild.classList.remove("d-none");
 
@@ -102,7 +95,14 @@ function ShowGIFS(data) {
         }
     }
 
-
-
-
+    document.querySelectorAll( '.copy-gif-button' ).forEach( element => {
+        element.addEventListener("click", function() {
+            console.log(this);
+                UrlInput = this.parentElement.firstElementChild;
+                UrlInput.select();
+                UrlInput.setSelectionRange(0, 999);
+                document.execCommand("copy");
+            } );
+    });        
+    
 }
