@@ -52,7 +52,7 @@ function ShowGIFS(data) {
         document.getElementById('content').innerHTML += `
         <div class="col-md-3 hover-img">
         <div class="card text-white bg-dark  mb-3">
-            <div class="card-header">Header</div>
+            <div class="card-header">${imageURL}</div>
             <div class="card-body p-1">
                 <img src="${imageURL}" class="card-img-top" alt="">
             </div>
