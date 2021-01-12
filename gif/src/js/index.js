@@ -49,16 +49,27 @@ function ShowGIFS(data) {
 
     data.data.forEach(image => {
         let imageURL = image.images.fixed_height.url;
+        let title = image.title;
         document.getElementById('content').innerHTML += `
         <div class="col-md-3 hover-img">
         <div class="card text-white bg-dark  mb-3">
-            <div class="card-header">${imageURL}</div>
+            <div class="card-header">${title}</div>
             <div class="card-body p-1">
                 <img src="${imageURL}" class="card-img-top" alt="">
             </div>
-            <div class="card-footer p-1 d-none text-muted">
-                     <span>upload:  2 days ago</span> 
-                      </div>
+            <div class="card-footer p-1  text-muted">
+
+            <div class="d-flex">
+                <input class="form-control form-control-sm rounded-0 " id="input" type="search"
+                    value="${imageURL}" aria-label="Search" readonly>
+                <button  type="button sm" class="btn btn-primary rounded-0  btn-sm"><i
+                        class="fas  fa-share-alt-square"></i> </button>
+      
+            </div>
+            <span class="h6">2 days ago</span>
+            <div class="col">
+            </div>
+        </div>
         </div>
     </div>
     `;
@@ -66,7 +77,9 @@ function ShowGIFS(data) {
     });
 
 
-    console.log("dimensione:" + data.data.length);
+
+
+  
 
 
     document.querySelectorAll('.hover-img').forEach(e => {
@@ -80,6 +93,7 @@ function ShowGIFS(data) {
     
     function mouseOver(event) {
         this.firstElementChild.lastElementChild.classList.remove("d-none");
+
     }
 
     function mouseOut(event) {
