@@ -78,22 +78,18 @@ function ShowGIFS(data) {
 
     document.querySelectorAll('.hover-img').forEach(e => {
         console.log("ciao");
-        e.addEventListener("mouseover", mouseOver);
-        e.addEventListener("mouseout", mouseOut);
+        e.addEventListener("mouseover", function(event) {
+            this.firstElementChild.lastElementChild.classList.remove("d-none");
+    
+        });
+        e.addEventListener("mouseout", function(event) {
+            if( !this.firstElementChild.lastElementChild.classList.contains("d-none") ) {
+                this.firstElementChild.lastElementChild.classList.add("d-none");
+            }
+        });
 
 
     });
-
-    function mouseOver(event) {
-        this.firstElementChild.lastElementChild.classList.remove("d-none");
-
-    }
-
-    function mouseOut(event) {
-        if( !this.firstElementChild.lastElementChild.classList.contains("d-none") ) {
-            this.firstElementChild.lastElementChild.classList.add("d-none");
-        }
-    }
 
     document.querySelectorAll( '.copy-gif-button' ).forEach( element => {
         element.addEventListener("click", function() {
