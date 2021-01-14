@@ -47,22 +47,22 @@ function ShowGIFS(data) {
     document.getElementById('content').innerHTML = "";
 
     let color = ['primary',
-       'secondary',
-       'success',
-       'info',
-       'warning',
-       'danger',
-       'dark'
-    ] 
+        'secondary',
+        'success',
+        'info',
+        'warning',
+        'danger',
+        'dark'
+    ]
 
     data.data.forEach(image => {
         let imageURL = image.images.fixed_height.url;
         const title = image.title;
         const capitalTitle = title.replace(/^\w/, e => e.toUpperCase()); // capitalize the first letter of a string
 
-         let rand = Math.floor((Math.random() * color.length) ); // generate a random value to determine the color of the card
+        let rand = Math.floor((Math.random() * color.length)); // generate a random value to determine the color of the card
 
-        
+
 
         document.getElementById('content').innerHTML += `
         <div class="col-md-3 hover-img">
@@ -93,12 +93,12 @@ function ShowGIFS(data) {
     document.querySelectorAll('.hover-img').forEach(e => {
 
         console.log("ciao");
-        e.addEventListener("mouseover", function(event) {
+        e.addEventListener("mouseover", function (event) {
             this.firstElementChild.lastElementChild.classList.remove("d-none");
-    
+
         });
-        e.addEventListener("mouseout", function(event) {
-            if( !this.firstElementChild.lastElementChild.classList.contains("d-none") ) {
+        e.addEventListener("mouseout", function (event) {
+            if (!this.firstElementChild.lastElementChild.classList.contains("d-none")) {
                 this.firstElementChild.lastElementChild.classList.add("d-none");
             }
         });
@@ -106,14 +106,14 @@ function ShowGIFS(data) {
 
     });
 
-    document.querySelectorAll( '.copy-gif-button' ).forEach( element => {
-        element.addEventListener("click", function() {
+    document.querySelectorAll('.copy-gif-button').forEach(element => {
+        element.addEventListener("click", function () {
             console.log(this);
-                UrlInput = this.parentElement.firstElementChild;
-                UrlInput.select();
-                UrlInput.setSelectionRange(0, 999);
-                document.execCommand("copy");
-            } );
-    });        
-    
+            UrlInput = this.parentElement.firstElementChild;
+            UrlInput.select();
+            UrlInput.setSelectionRange(0, 999);
+            document.execCommand("copy");
+        });
+    });
+
 }
