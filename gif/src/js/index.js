@@ -46,14 +46,7 @@ function Request(query) {
 function ShowGIFS(data) {
     document.getElementById('content').innerHTML = "";
 
-    let color = ['primary',
-        'secondary',
-        'success',
-        'info',
-        'warning',
-        'danger',
-        'dark'
-    ]
+    let color = ['primary','secondary', 'success','info','warning', 'danger', 'dark' ] //color card array
 
     data.data.forEach(image => {
         let imageURL = image.images.fixed_height.url;
@@ -72,22 +65,19 @@ function ShowGIFS(data) {
                 <img src="${imageURL}" class="card-img-top" alt="">
             </div>
             <div class="card-footer p-1 text-muted">
-
-            <div class="d-flex">
-                <input class="form-control form-control-sm rounded-0 " id="input" type="search"
-                    value="${imageURL}" aria-label="Search" readonly>
-                <button  type="button sm" class="copy-gif-button btn btn-primary rounded-0  btn-sm"><i
-                        class="fas  fa-share-alt-square"></i> </button>
-      
+                <div class="d-flex">
+                    <input class="form-control form-control-sm rounded-0 " id="input" type="search"
+                        value="${imageURL}" aria-label="Search" readonly>
+                    <button type="button sm" class="copy-gif-button btn btn-primary rounded-0  btn-sm"><i
+                            class="fas  fa-share-alt-square"></i></button>
+                </div>
+                <span class="h6 text-white">2 days ago</span>
+                <div class="col">
+                </div>
             </div>
-            <span class="h6 text-white">2 days ago</span>
-            <div class="col">
-            </div>
-        </div>
         </div>
     </div>
     `;
-        //console.log(image);
     });
 
     document.querySelectorAll('.hover-img').forEach(e => {
