@@ -46,14 +46,28 @@ function Request(query) {
 function ShowGIFS(data) {
     document.getElementById('content').innerHTML = "";
 
+    let color = ['primary',
+       'secondary',
+       'success',
+       'info',
+       'warning',
+       'danger',
+       'dark'
+    ] 
 
     data.data.forEach(image => {
         let imageURL = image.images.fixed_height.url;
-        let title = image.title;
+        const title = image.title;
+        const capitalTitle = title.replace(/^\w/, e => e.toUpperCase()); // capitalize the first letter of a string
+
+         let rand = Math.floor((Math.random() * color.length) ); // generate a random value to determine the color of the card
+
+        
+
         document.getElementById('content').innerHTML += `
         <div class="col-md-3 hover-img">
-        <div class="card text-white bg-dark  mb-3">
-            <div class="card-header">${title}</div>
+        <div class="card text-white bg-${color[rand]}  mb-3">
+            <div class="card-header">${capitalTitle}</div>
             <div class="card-body p-1">
                 <img src="${imageURL}" class="card-img-top" alt="">
             </div>
@@ -66,7 +80,7 @@ function ShowGIFS(data) {
                         class="fas  fa-share-alt-square"></i> </button>
       
             </div>
-            <span class="h6">2 days ago</span>
+            <span class="h6 text-white">2 days ago</span>
             <div class="col">
             </div>
         </div>
@@ -77,6 +91,7 @@ function ShowGIFS(data) {
     });
 
     document.querySelectorAll('.hover-img').forEach(e => {
+
         console.log("ciao");
         e.addEventListener("mouseover", function(event) {
             this.firstElementChild.lastElementChild.classList.remove("d-none");
