@@ -67,11 +67,11 @@ function ShowGIFS(data) {
         document.getElementById('content').innerHTML += `
         <div class="col-md-3 hover-img">
         <div class="card text-white bg-${color[rand]}  mb-3">
-            <div class="card-header">${capitalTitle}</div>
+            <div class="card-header h5">${capitalTitle}</div>
             <div class="card-body p-1">
                 <img src="${imageURL}" class="card-img-top" alt="">
             </div>
-            <div class="card-footer p-1  text-muted">
+            <div class="card-footer p-1 text-muted">
 
             <div class="d-flex">
                 <input class="form-control form-control-sm rounded-0 " id="input" type="search"
