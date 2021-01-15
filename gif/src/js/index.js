@@ -7,6 +7,7 @@ document.getElementById("button").addEventListener("click", () => {
 
 });
 
+
 document.getElementById("input").addEventListener("keyup", (e) => {
 
     let input_text = document.getElementById("input").value;
