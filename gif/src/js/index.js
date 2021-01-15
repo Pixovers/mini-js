@@ -1,4 +1,24 @@
 
+window.onload = function() {
+ 
+    const url = "http://api.giphy.com/v1/gifs/trending?api_key=dc6zaTOxFJmzC";
+
+    let call = new XMLHttpRequest();
+    call.open('GET', url);
+    call.send();
+
+
+    call.addEventListener('load', (e) => {
+
+        let data = JSON.parse(e.target.response);
+
+        console.log(data);
+        ShowGIFS(data);
+
+    });
+}
+
+
 document.getElementById("button").addEventListener("click", () => {
 
     let input_text = document.getElementById("input").value;
@@ -26,6 +46,7 @@ function Request(query) {
     query.replace(" ", "+");
 
     let url = `http://api.giphy.com/v1/gifs/search?q=${query}&api_key=dc6zaTOxFJmzC`;
+    
     let call = new XMLHttpRequest();
     call.open('GET', url);
     call.send();
@@ -83,7 +104,6 @@ function ShowGIFS(data) {
 
     document.querySelectorAll('.hover-img').forEach(e => {
 
-        console.log("ciao");
         e.addEventListener("mouseover", function (event) {
             this.firstElementChild.lastElementChild.classList.remove("d-none");
 
