@@ -19,6 +19,7 @@ window.onload = function() {
 }
 
 
+
 document.getElementById("button").addEventListener("click", () => {
 
     let input_text = document.getElementById("input").value;
