@@ -84,7 +84,7 @@ function ShowGIFS(data) {
         data.data.forEach(image => {
 
 
-            let data = image.import_datetime;
+            let showData = image.import_datetime;
             let imageURL = image.images.fixed_height.url;
             const title = image.title;
             const capitalTitle = title.replace(/^\w/, e => e.toUpperCase()); // capitalize the first letter of a string
@@ -107,7 +107,7 @@ function ShowGIFS(data) {
                         <button type="button sm" class="copy-gif-button btn btn-primary rounded-0  btn-sm"><i
                                 class="fas  fa-share-alt-square"></i></button>
                     </div>
-                    <span class="h6 text-white">${date}</span>
+                    <span class="h6 text-white">${showData}</span>
                     <div class="col">
                     </div>
                 </div>
